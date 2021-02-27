@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { createPost, showAlert } from '../redux/actions'
+import { Alert } from './Alert'
 
 class PostForm extends React.Component {
     constructor(props) {
@@ -32,6 +33,7 @@ class PostForm extends React.Component {
     render() {
         return (
         <form onSubmit={this.submitHandler}>
+           {this.props.alert && <Alert text={this.props.alert} />}
             <div className="mb-3">
                 <label htmlFor="title" className="form-label">Заголовок поста</label>
                 <input type="text" 
@@ -50,5 +52,8 @@ class PostForm extends React.Component {
 const mapDispatchToProps = {
     createPost, showAlert
 }
+const mapStateToProps = state => ({
+    alert: state.app.alert
+})
 
-export default connect(null, mapDispatchToProps)(PostForm)
+export default connect(mapStateToProps, mapDispatchToProps)(PostForm)

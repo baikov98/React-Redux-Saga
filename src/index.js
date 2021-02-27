@@ -6,9 +6,10 @@ import thunk from 'redux-thunk'
 import { rootReducer } from './redux/rootReducer';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
+import { forbiddenWordsMiddleware } from './redux/middleware';
 
 const store = createStore(rootReducer, compose(
-  applyMiddleware(thunk),
+  applyMiddleware(thunk, forbiddenWordsMiddleware),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 ))
 

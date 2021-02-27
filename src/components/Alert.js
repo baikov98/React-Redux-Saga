@@ -1,7 +1,8 @@
 import React from 'react'
 
 
-export default () => {
-    const dispatch = useDispatch()
-    const posts = useSelector(state => state.posts.fetchedPosts)
-}
+export const Alert = ({ text }) => (
+    <div className="alert alert-warning" role="alert">
+        {text}
+    </div>
+)
